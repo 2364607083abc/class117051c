@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- //heart是组件的一个属性，那么组建必须通过props声明这个属性 -->
+ 
+<milu-v2>
+    <!-- // <h5>评论：你怎么这么厉害！！</h5> -->
+    <template v-slot:title> 
+{{article.title}}
+    </template>
+    <template v-slot:author> 
+            {{article.author}}
+                </template>
+                <template v-slot:Date> 
+                        {{article.Date}}
+                            </template>
+            
+                           {{article.content}}
+                                        </milu-v2>
+</milu-v2>
+  
+</div>
+        <script>
+        //     //定义guolele这个自定义组件
+        //     //第一个参数是自定义组件的标签名称，第二个参数是定义该组件的运行规则对象，
+        
+
+        //     //template中定义的是组件的模板，也就是html和{{}}以及vue指令的组合
+        //      //template必须要有 根标签，例如<h1></h1><h2></h2>不合法，
+        //      //<div><h1></h1><h2></h2></div>合法
+        //      template:'<div>'+
+        //      '<h1 style="color:red">{{heart.title}}</h1>'+
+        //      '<h2>作者：{{heart.author}}</h2>'+
+        //      '<h3>时间：{{heart.publishDate}}</h3>'+
+        //      '<p> {{heart.content}}</p>'+
+        //      '<slot></slot>'+
+        //      '</div>'
+  Vue.component('milu-v2',{
+      template:'<div>'+
+      '<h1><slot name="title"></slot></h1>'+
+      '<h2><slot name="author"></slot></h2>'+
+      '<h3><slot name="date"></slot></h3>'+
+            '<p><slot></slot></p>'+
+            '</div>'
+          });
+      
+      
+        var app = new Vue({
+          el:"#app",
+     data:{
+         article:  {
+              title:"论真实年龄",
+              author:"迷路的麋鹿",
+              publishDate:"2019-12-10",
+              content:" 根据我多年"
+        }
+        }
+        })
+        </script>
+</body>
+</html>
